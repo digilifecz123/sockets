@@ -18,7 +18,7 @@ io.on('connection', function (socket) {
 
  // this prints out message to console
   socket.emit('message', {
-    text: 'welcome to the chat application!'
+    text: 'Welcome to TuanoChatt'
   });
 });
 
