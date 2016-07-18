@@ -1,4 +1,5 @@
 var PORT = process.env.PORT || 3000;
+var moment = require('moment');
 var express = require('express');
 var app = express();
 var http = require('http').Server(app);
@@ -11,6 +12,7 @@ io.on('connection', function (socket) {
  
  socket.on('message', function(message){
    console.log('message recieved: ' + message.text);
+   message.timeStamp = moment().valueOf();
    // socket.broadcast.emit send to everyone except the sender
     // socket.emit we have to use io.emit
    io.emit('message', message);
@@ -18,7 +20,9 @@ io.on('connection', function (socket) {
 
  // this prints out message to console
   socket.emit('message', {
-    text: 'Welcome to TuanoChatt'
+    name: 'System', 
+    text: 'Welcome to TuanoChatt',
+      timeStamp: moment().valueOf()
   });
 });
 
