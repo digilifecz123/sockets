@@ -1,37 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Sockets.io</title>
+  <meta charset="UTF-8">
+  <title>Sockets.io</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/styles.css">
 </head>
+
 <body>
-    <a href="/index.html">Change name</a>
-    <div class="messages">
-        <!--message here-->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 well hi">
+        <a href="/index.html">Change name</a>
+
+        <h1 class="room-title text-center"></h1>
+
+        <div class="messages list-group">
+          <!--message here-->
+        </div>
+
+        <form action="" id="message-form">
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-comment"></i>
+              </span>
+              <input type="text" name="message" class="form-control" />
+            </div>
+          </div>
+
+          <div class="form-group">
+
+            <input type="submit" class="btn btn-default btn-block">
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
 
-    <form action="" id="message-form">
-        <input type="text" name="message"/>
-        <input type="submit">
-    </form>
 
-    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
-    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.js'></script>
-    <!--<script src="/js/queryparams.js"></script>-->
-    <script>
+  <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.js'></script>
+  <!--<script src="/js/queryparams.js"></script>-->
+  <script>
         function getQueryVariable(variable) {
     var query = window.location.search.substring(1);
     var vars = query.split('&');
     for (var i = 0; i < vars.length; i++) {
         var pair = vars[i].split('=');
         if (decodeURIComponent(pair[0]) == variable) {
-            return decodeURIComponent(pair[1]);
+            // takes + and replace to ' '
+            return decodeURIComponent(pair[1].replace(/\+/g, ' '));
         }
     }
     return undefined;
 }
     </script>
-    <script src="/js/app.js"></script>
+  <script src="/js/app.js"></script>
 </body>
+
 </html>
