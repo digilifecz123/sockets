@@ -7,6 +7,5 @@ function getQueryVariable(variable) {
             return decodeURIComponent(pair[1]);
         }
     }
-    
     return undefined;
 }
